@@ -20,7 +20,7 @@ app.post('/capture', (req, res) => {
 
     /* (WILL IMPLEMENT WHEN MODEL's API IS THERE)
     try {
-        // Data to be given to ML model's API
+        // Data to be given to ML model's API (anikate & nihaal)
         const mlResponse = await axios.post('http://ml-model-endpoint/api', {
             key_count,
             key_sequence,
