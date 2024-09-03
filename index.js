@@ -3,32 +3,43 @@ const axios = require('axios');
 const app = express();
 const port = 3000;
 
-app.use(express.json()); 
-app.post('/capture', async (req, res) => {
-    // frontend ka extracted data
-    const { enrolmentID, EIDDate, EIDTime, captcha } = req.body;
+app.use(express.json());
 
-    /*   (WILL IMPLEMENT WHEN MODEL's API IS THERE)
+app.post('/capture', (req, res) => {
+    // Extracted data from frontend
+    const { key_count, key_sequence, time_delay, mouse_movements, mouse_clicks } = req.body;
+
+    // Log the received data
+    console.log('Received Data:', {
+        key_count,
+        key_sequence,
+        time_delay,
+        mouse_movements,
+        mouse_clicks
+    });
+
+    /* (WILL IMPLEMENT WHEN MODEL's API IS THERE)
     try {
-        // data to be given to ml model's API (anikate & nihaal)
+        // Data to be given to ML model's API
         const mlResponse = await axios.post('http://ml-model-endpoint/api', {
-            enrolmentID,
-            EIDDate,
-            EIDTime,
-            captcha
+            key_count,
+            key_sequence,
+            time_delay,
+            mouse_movements,
+            mouse_clicks
         });
         const prediction = mlResponse.data;
 
-        // model's response back to frontedn
+        // Model's response back to frontend
         res.json({ prediction });
     } catch (error) {
         console.error('Error sending data to ML model:', error);
         res.status(500).json({ error: 'Error processing data' });
     }
-        */
+    */
 
-    // just for checking rn
-    res.json({ enrolmentID, EIDDate, EIDTime, captcha });
+    // Just for checking rn
+    res.json({ key_count, key_sequence, time_delay, mouse_movements, mouse_clicks });
 });
 
 app.listen(port, () => {
