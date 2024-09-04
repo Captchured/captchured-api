@@ -1,5 +1,5 @@
 const express = require('express');
-const axios = require('axios'); // This will be unused until you have the ML model
+const axios = require('axios'); 
 const app = express();
 const port = 3000;
 
@@ -28,7 +28,7 @@ app.post('/capture', async (req, res) => {
         environment
     });
 
-    // Commented out ML model interaction
+    
     /*
     try {
         // Send the data to the ML model's API (when received)
@@ -68,7 +68,7 @@ app.post('/capture', async (req, res) => {
     }
     */
 
-    // For testing purposes, we will just send a success message
+    // For testing purposes, will just send a success message
     res.json({ message: 'Data received and processed successfully' });
 });
 
