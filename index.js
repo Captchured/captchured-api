@@ -16,8 +16,11 @@ app.use(express.json());
 app.post('/capture', async (req, res) => {
     // Extracted data from frontend
     const { key_count, key_sequence, time_delay, mouse_movements, mouse_clicks, total_time, environment } = req.body;
+    
+    // Extract cookies from environment object
+    const { cookies } = environment;
 
-    // Logging the received data
+    // Logging the received data including cookies
     console.log('Received Data:', {
         key_count,
         key_sequence,
@@ -28,7 +31,8 @@ app.post('/capture', async (req, res) => {
         environment
     });
 
-    
+    console.log('Cookies:', cookies);  // Logging the cookies separately for better readability
+
     /*
     try {
         // Send the data to the ML model's API (when received)
@@ -69,7 +73,7 @@ app.post('/capture', async (req, res) => {
     */
 
     // For testing purposes, will just send a success message
-    res.json({ message: 'Data received and processed successfully' });
+    res.json({ message: 'Data received and processed successfully', cookies });
 });
 
 app.listen(port, () => {
