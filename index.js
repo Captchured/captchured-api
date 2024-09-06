@@ -17,7 +17,6 @@ app.post('/capture', async (req, res) => {
     // Extracted data from frontend
     const { key_count, key_sequence, time_delay, mouse_movements, mouse_clicks, total_time, environment } = req.body;
     
-    // Extract cookies from environment object
     const { cookies } = environment;
 
     // Logging the received data including cookies
@@ -31,11 +30,10 @@ app.post('/capture', async (req, res) => {
         environment
     });
 
-    console.log('Cookies:', cookies);  // Logging the cookies separately for better readability
+    console.log('Cookies:', cookies);  // Logging the cookies separately 
 
     /*
     try {
-        // Send the data to the ML model's API (when received)
         const mlResponse = await axios.post('http://ml-model-endpoint/api', {
             key_count,
             key_sequence,
