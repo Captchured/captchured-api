@@ -34,7 +34,6 @@ app.post('/capture', async (req, res) => {
 
     /*
     try {
-        // Send the data to the ML model's API (when received)
         const mlResponse = await axios.post('http://ml-model-endpoint/api', {
             key_count,
             key_sequence,
